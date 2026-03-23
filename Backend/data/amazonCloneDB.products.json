@@ -1,0 +1,163 @@
+[{
+  "_id": {
+    "$oid": "69ba3d66b042fc394b0eeefd"
+  },
+  "name": "Wireless Bluetooth Headphones",
+  "description": "High-quality wireless headphones with noise cancellation and long battery life.",
+  "price": 2999,
+  "category": "Electronics",
+  "image": {
+    "filename": "http://localhost:8000/api/image/1773842189447.jpg"
+  },
+  "ratings": 4.5,
+  "seller": "Tech Store India",
+  "stock": 150,
+  "numOfReviews": 2,
+  "reviews": [
+    {
+      "name": "Arun Kumar",
+      "rating": 5,
+      "comment": "Excellent sound quality and very comfortable."
+    },
+    {
+      "name": "Priya Sharma",
+      "rating": 4,
+      "comment": "Good product but battery life could be better."
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69ba3d66b042fc394b0eeefe"
+  },
+  "name": "Men's Cotton T-Shirt",
+  "description": "Soft and breathable cotton t-shirt suitable for daily wear.",
+  "price": 499,
+  "category": "Clothing",
+  "image": {
+    "filename": "http://localhost:8000/api/image/48.jpg"
+  },
+  "ratings": 4.2,
+  "seller": "Fashion Hub",
+  "stock": 300,
+  "numOfReviews": 1,
+  "reviews": [
+    {
+      "name": "Rahul Verma",
+      "rating": 4,
+      "comment": "Comfortable fabric and good fit."
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69ba3d66b042fc394b0eeeff"
+  },
+  "name": "Organic Honey 500g",
+  "description": "Pure and natural organic honey sourced from forest farms.",
+  "price": 650,
+  "category": "Food",
+  "image": {
+    "filename": "http://localhost:8000/api/image/47.jpg"
+  },
+  "ratings": 4.8,
+  "seller": "Healthy Foods Pvt Ltd",
+  "stock": 200,
+  "numOfReviews": 3,
+  "reviews": [
+    {
+      "name": "Suresh Kumar",
+      "rating": 5,
+      "comment": "Very pure and tasty honey."
+    },
+    {
+      "name": "Anita Rao",
+      "rating": 5,
+      "comment": "Good quality and worth the price."
+    },
+    {
+      "name": "Karthik R",
+      "rating": 4,
+      "comment": "Nice product but bottle could be better."
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69ba3d66b042fc394b0eef00"
+  },
+  "name": "Smart LED TV 43 Inch",
+  "description": "Full HD Smart LED TV with built-in apps and voice control.",
+  "price": 24999,
+  "category": "Electronics",
+  "image": {
+    "filename": "http://localhost:8000/api/image/07.jpg"
+  },
+  "ratings": 4.4,
+  "seller": "Home Electronics",
+  "stock": 80,
+  "numOfReviews": 2,
+  "reviews": [
+    {
+      "name": "Vijay Kumar",
+      "rating": 5,
+      "comment": "Excellent picture quality."
+    },
+    {
+      "name": "Sneha Patel",
+      "rating": 4,
+      "comment": "Value for money TV."
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69ba3d66b042fc394b0eef01"
+  },
+  "name": "Running Shoes for Men",
+  "description": "Lightweight running shoes with excellent grip and comfort.",
+  "price": 1999,
+  "category": "Sports",
+  "image": {
+    "filename": "http://localhost:8000/api/image/80.jfif"
+  },
+  "ratings": 4.3,
+  "seller": "Sports World",
+  "stock": 120,
+  "numOfReviews": 2,
+  "reviews": [
+    {
+      "name": "Amit Singh",
+      "rating": 4,
+      "comment": "Good cushioning and grip."
+    },
+    {
+      "name": "Rohit Mehta",
+      "rating": 5,
+      "comment": "Very comfortable for daily running."
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69ba3d66b042fc394b0eef02"
+  },
+  "name": "Non-Stick Cookware Set",
+  "description": "Durable non-stick cookware set suitable for Indian cooking.",
+  "price": 3499,
+  "category": "Home",
+  "image": {
+    "filename": "http://localhost:8000/api/image/05.jfif"
+  },
+  "ratings": 4.1,
+  "seller": "Kitchen Essentials",
+  "stock": 90,
+  "numOfReviews": 1,
+  "reviews": [
+    {
+      "name": "Lakshmi Devi",
+      "rating": 4,
+      "comment": "Good quality but slightly heavy."
+    }
+  ]
+}]

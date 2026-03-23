@@ -77,3 +77,28 @@ exports.newProduct = async(req, res) => {
     });
   }
     
+//fillter products - api/products/filter
+exports.filterProducts = async (req, res) => {
+  const { category } = req.params; // ✅ FIX
+
+  const filter = {};
+
+  if (category) {
+    filter.category = category;
+  }
+
+  const products = await Product.find(filter);
+
+  if (products.length === 0) {
+    return res.status(404).json({
+      success: false,
+      message: 'No products found for the specified category',
+    });
+  }
+
+  res.status(200).json({
+    success: true,
+    count: products.length,
+    products,
+  });
+};

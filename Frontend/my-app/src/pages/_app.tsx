@@ -6,17 +6,28 @@ import '@/styles/lib/lightbox/css/lightbox.min.css';
 import '@/styles/lib/owlcarousel/assets/owl.carousel.min.css';
 import Layout from "@/publicWebsite/layout/layoutProvider";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import DashboardLayout from "@/publicWebsite/dashboardlayout/DashboardLayout";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps , router }: AppProps) {
+   if (router.pathname.startsWith("/dashboard")) {
+    return (
+      <DashboardLayout>
+        <Component {...pageProps} />
+      </DashboardLayout>
+    );
+  }
   return (
     <Layout>
 
         <Head>
           <title>ShopNest</title>
           <link rel="icon" href="/icon.png" />
-
         </Head>
         <Component {...pageProps} />
+
+
+     
 
     </Layout>
   );

@@ -1,0 +1,24 @@
+[
+    {
+  "name": "Admin User",
+  "email": "admin@example.com",
+  "password": "admin12345",
+  "products": [],
+  "avatar": "https://example.com/admin.jpg",
+  "role": "admin",
+  "resetPasswordToken": null,
+  "resetPasswordExpire": null,
+  "createdAt": "2026-03-18T10:40:00.000Z"
+},
+{
+  "name": "Normal User",
+  "email": "user@example.com",
+  "password": "user12345",
+  "products": [],
+  "avatar": "https://example.com/user.jpg",
+  "role": "user",
+  "resetPasswordToken": null,
+  "resetPasswordExpire": null,
+  "createdAt": "2026-03-18T10:45:00.000Z"
+}
+]

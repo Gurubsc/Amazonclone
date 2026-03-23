@@ -1,0 +1,39 @@
+{
+  "shippingInfo": {
+    "address": "123 Anna Street",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "country": "India",
+    "pinCode": 600001,
+    "phoneNo": 9876543210
+  },
+  "orderItems": [
+    {
+      "name": "iPhone 14",
+      "quantity": 1,
+      "price": 80000,
+      "image": "https://example.com/images/iphone14.jpg",
+      "product": "65f1a2b3c4d5e6f7890a1234"
+    },
+    {
+      "name": "Samsung Galaxy S23",
+      "quantity": 2,
+      "price": 70000,
+      "image": "https://example.com/images/s23.jpg",
+      "product": "65f1a2b3c4d5e6f7890a5678"
+    }
+  ],
+  "user": "65f1a2b3c4d5e6f7890a9999",
+  "paymentInfo": {
+    "id": "pay_123456789",
+    "status": "succeeded"
+  },
+  "paidAt": "2026-03-18T10:00:00.000Z",
+  "itemsPrice": 220000,
+  "taxPrice": 5000,
+  "shippingPrice": 200,
+  "totalPrice": 225200,
+  "orderStatus": "Processing",
+  "deliveredAt": null,
+  "createdAt": "2026-03-18T09:50:00.000Z"
+}

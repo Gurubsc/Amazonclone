@@ -3,10 +3,10 @@ import { FaTwitter, FaFacebookF, FaYoutube, FaLinkedinIn } from "react-icons/fa"
 
 const Footer = () => {
   return (
-    <div className="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-      <div className="container py-5">
+    <div className="d-flex flex-column mt-auto container-fluid bg-dark text-white-50 footer pt-5 mt-auto">
+      <div className="container py-5 flex-grow-1">
         <div
-          className="pb-4 mb-4"
+          className="pb-4 mb-4 "
           style={{ borderBottom: "1px solid rgba(226, 175, 24, 0.5)" }}
         >
           <div className="row g-4 align-items-center">

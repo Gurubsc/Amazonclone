@@ -19,6 +19,10 @@ app.use('/api', productRoutes);
 app.use( authRoutes);
 app.use('/api', orderRoutes);
 
+// Search route
+const searchRoutes = require('./routers/search');
+app.use('/api', searchRoutes);
+
 //Image upload route
 const uploadRoutes = require('./routers/uploadRoutes');
 app.use('/api', uploadRoutes);

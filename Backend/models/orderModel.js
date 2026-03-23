@@ -17,13 +17,11 @@ const orderSchema = new mongoose.Schema({
             product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
         },
     ],
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    paymentInfo: {
-        id: { type: String },   
-        status: { type: String },
+    paymentInfo: { 
+        name: { type: String, required: true },
     },
     paidAt: { type: Date },
-    itemsPrice: { type: Number, required: true, default: 0 },
+    itemsPrice: { type: Number,  default: 0 },
     taxPrice: { type: Number, required: true, default: 0 },
     shippingPrice: { type: Number, required: true, default: 0 },
     totalPrice: { type: Number, required: true, default: 0 },

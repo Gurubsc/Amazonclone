@@ -1,6 +1,10 @@
 // components/OrganicProducts.jsx
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
+
 // data/products.js
 const products = [
   {
@@ -69,68 +73,125 @@ const products = [
   },
 ];
 
-
+interface Product {
+  _id: string;
+  name: string;
+  category: string;
+  image: {
+    filename: string;
+  };
+  price: string;
+  description: string;
+}
 
 
 export default function Cards() {
+     const { user } = useContext(AuthContext);
+      const { setUser } = useContext(AuthContext);
+      const {getUserDetails } = useContext(AuthContext);
+
+    const[products , setproducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+      const fetchProducts = async () => {
+        try {
+          const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
+          setproducts(res.data.products);
+          // console.log("Fetched products:", res.data.products);
+        } catch (err) {
+          console.error("Error fetching products:", err);
+        }
+      };
+
+      fetchProducts();
+    }, []);
+
+  const handleAddToCart = async (productId: string) => {
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/addproduct`,
+        { productId },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+        getUserDetails(); // ✅ Refresh user details to update cart
+        window.alert(res.data.message || "Product added to cart!");
+    } catch (err) {
+     
+        console.error("Error:", err.response?.data || err.message);
+          window.alert("Please try again or you may already have this product in your cart."); 
+    }
+  };
   return (
     <div className="container-fluid fruite py-5">
       <div className="container py-5">
-        <h1 className="text-center mb-5">Our Organic Products</h1>
+        <h1 className="text-center mb-5">Our Products</h1>
 
         <div className="row g-4">
-          {products.map((item) => (
-           <div key={item.id} className="col-md-6 col-lg-4 col-xl-3">
-  <Link href="/product" className="text-decoration-none text-dark">
-    <div className="rounded position-relative fruite-item card h-100">
-      
-      {/* Image */}
-      <div className="fruite-img">
-        <Image
-          src={item.image}
-          alt={item.title}
-          width={300}
-          height={300}
-          unoptimized
-          className="img-fluid w-100 rounded-top"
-        />
-      </div>
+          {
+          products
+          .filter((item) => item.category !== "fruits")
+          .map((item) => (
+            <div key={item.id} className="col-md-6 col-lg-4 col-xl-3">
+              <Link href={{
+                pathname: `/product`,
+                query: { id: item._id },
+              }} className="text-decoration-none text-dark">
+                <div className="rounded position-relative fruite-item card h-100 d-flex flex-column">
 
-      {/* Category badge */}
-      <div
-        className="text-white bg-primary px-3 py-1 rounded position-absolute"
-        style={{ top: "10px", left: "10px" }}
-      >
-        {item.category}
-      </div>
+                  {/* Image */}
+                  <div className="fruite-img">
+                    <Image
+                      src={item.image?.filename || "https://picsum.photos/seed/default/500/350"}
+                      alt={item.name}
+                      width={300}
+                      height={300}
+                      unoptimized
+                      className="img-fluid w-100 rounded-top"
+                    />
+                  </div>
 
-      {/* Content */}
-      <div className="p-4 border-top-0 rounded-bottom">
-        <h4>{item.title}</h4>
-        <p>{item.description}</p>
+                  {/* Category badge */}
+                  <div className="fw-semibold px-3 py-2 text-center bg-light rounded shadow-sm">
+                           {item.name}
+                  </div>
+                  <div
+                    className="text-white bg-primary px-3 py-1 rounded position-absolute"
+                    style={{ top: "10px", left: "10px" }}
+                  >
+                    {item.category}
+                  </div>
 
-        <div className="d-flex justify-content-between align-items-center">
-          <p className="text-dark fs-5 fw-bold mb-0">
-            {item.price}
-          </p>
+                  {/* Content */}
+                  <div className="p-4 border-top-0 rounded-bottom mt-auto d-flex flex-column ">
+                  
+                    <p>{item.description}</p>
 
-          {/* Button – NOT a Link */}
-          <button
-            className="btn btn-outline-primary rounded-pill px-3 "
-            onClick={(e) => {
-              e.preventDefault(); // stop page navigation
-              console.log("Add to cart", item.id);
-            }}
-          >
-            <i className="fa fa-shopping-bag me-2 text-primary"></i>
-            Add to cart
-          </button>
-        </div>
-      </div>
+                    <div className="d-flex justify-content-between  align-items-center mt-auto">
+                      <p className="text-dark fs-5 fw-bold mb-0">
+                        {item.price}
+                      </p>
+                      {/* Button – NOT a Link */}
+                      <button
+                        className="btn btn-outline-primary rounded-pill px-3 "
+                        onClick={(e) => {
+                          e.preventDefault(); // Prevent Link navigation
+                          handleAddToCart(item._id); // Call add to cart function
+                        }}
+                      
+                      >
+                        <i className="fa fa-shopping-bag me-2 text-primary"></i>
+                        Add to cart
+                      </button>
+                    </div>
+                  </div>
 
-    </div>
-  </Link>
-</div>
+                </div>
+              </Link>
+            </div>
 
           ))}
         </div>

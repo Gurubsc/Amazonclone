@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "69ba4055633fd656af662d1c"
+  },
+  "name": "Admin User",
+  "email": "admin@example.com",
+  "password": "$2b$10$6aK/nJmWwBWncfV.sbXdf.852KyAlCawFoHQYnyDtVzOrWI1mhaSO",
+  "products": [],
+  "role": "user",
+  "createdAt": {
+    "$date": "2026-03-18T06:04:05.445Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69bbc0647862b62b402deac2"
+  },
+  "name": "Normal User",
+  "email": "user@example.com",
+  "password": "$2b$10$qENpjyTFGBDNQEjn/POIq.HMOOzYBJU2Pib4A2/wVhLEIIe3IJMzm",
+  "products": [
+    {
+      "$oid": "69ba3d66b042fc394b0eeefd"
+    },
+    {
+      "$oid": "69ba3d66b042fc394b0eeefe"
+    },
+    {
+      "$oid": "69ba3d66b042fc394b0eef00"
+    },
+    {
+      "$oid": "69ba3d66b042fc394b0eeeff"
+    }
+  ],
+  "role": "user",
+  "createdAt": {
+    "$date": "2026-03-19T09:22:44.718Z"
+  },
+  "__v": 4
+}]

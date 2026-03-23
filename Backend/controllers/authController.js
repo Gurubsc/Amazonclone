@@ -133,3 +133,16 @@ exports.addProductToUser = catchAsyncError(async (req, res, next) => {
         user
     });
 });
+
+//remove product from user
+exports.removeProductFromUser = catchAsyncError(async (req, res, next) => {
+    const user = await User.findById(req.user.id);
+
+    user.products = user.products.filter(productId => productId.toString() !== req.body.productId);
+    await user.save();
+
+    res.status(200).json({
+        success: true,
+        user
+    });
+});

@@ -22,10 +22,6 @@ const productSchema = new mongoose.Schema(
     category: {
       type: String,
       required: [true, 'Please select product category'],
-      enum: {
-        values: ['Electronics', 'Books', 'Clothing', 'Home', 'Sports', 'Food', 'Other'],
-        message: 'Please select a correct category',
-      },
     },
 
     image: {
@@ -64,15 +60,15 @@ const productSchema = new mongoose.Schema(
       {
         name: {
           type: String,
-          required: true,
+        
         },
         rating: {
           type: Number,
-          required: true,
+    
         },
         comment: {
           type: String,
-          required: true,
+    
         },
       },
     ],

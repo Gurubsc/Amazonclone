@@ -12,9 +12,12 @@ import {
 import { FiMenu } from "react-icons/fi";
 import { useEffect, useRef } from 'react';
 import Search from './search';
+import { useContext } from 'react';
+import { AuthContext } from '@/context/AuthContext';      
 
 export default function Navbar() {
   const headerRef = useRef(null);
+    const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -108,7 +111,7 @@ export default function Navbar() {
                     fontSize: "12px",
                   }}
                 >
-                  3
+                  {user?.products?.length || 0}
                 </span>
               </Link>
 
