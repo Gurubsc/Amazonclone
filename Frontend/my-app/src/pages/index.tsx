@@ -30,7 +30,6 @@ export default function Home() {
     <Cards />
     <Features />
     <SecondCard />
-    <Products />
     </>
   );
 }

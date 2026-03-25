@@ -44,6 +44,21 @@ export default function AdminOrdersPage() {
     );
   }
 
+  const handleUpdate = async (id, status) => {
+  try {
+    await axios.put(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/update/${id}`,
+      { status: status }
+    );
+    window.alert("updated")
+    // refresh orders
+    window.location.reload();
+  } catch (err) {
+    window.alert("error")
+    console.log(err);
+  }
+};
+
   return (
     <div className="container mt-4">
       <h3 className="mb-4 text-center">Admin Orders</h3>
@@ -52,90 +67,77 @@ export default function AdminOrdersPage() {
         <p className="text-center">No orders found</p>
       )}
 
-      {orders.map((order) => (
-        <div
-          key={order._id}
-          className="card mb-4 shadow-sm border-0 rounded-4 p-3"
-        >
-          {/* 🛒 Order Items */}
-          {order.orderItems.map((item) => (
-            <div
-              key={item._id}
-              className="d-flex align-items-center border-bottom pb-3 mb-3"
-            >
-              <Image
-                src={item.image}
-                alt={item.name}
-                width={80}
-                height={80}
-                unoptimized
-                className="rounded-3"
-              />
-
-              <div className="ms-3 flex-grow-1">
-                <h6 className="mb-1 fw-semibold">
-                  {item.name}
-                </h6>
-
-                <p className="mb-1 text-muted small">
-                  Quantity: {item.quantity}
-                </p>
-
-                <p className="mb-0 fw-bold text-success">
-                  ₹{item.price}
-                </p>
-              </div>
-            </div>
-          ))}
-
-          {/* 💰 Price Details */}
-          <div className="mt-2">
-            <p className="mb-1">
-              <strong>Items:</strong> ₹{order.itemsPrice}
-            </p>
-            <p className="mb-1">
-              <strong>Tax:</strong> ₹{order.taxPrice}
-            </p>
-            <p className="mb-1">
-              <strong>Shipping:</strong> ₹{order.shippingPrice}
-            </p>
-
-            <h5 className="text-success">
-              Total: ₹{order.totalPrice}
-            </h5>
-          </div>
-
-          {/* 🚚 Shipping Info */}
-          <div className="mt-3">
-            <h6 className="fw-bold">Shipping Info</h6>
-            <p className="mb-1">
-              {order.shippingInfo.address}
-            </p>
-            <p className="mb-1">
-              {order.shippingInfo.city},{" "}
-              {order.shippingInfo.state}
-            </p>
-            <p className="mb-1">
-              {order.shippingInfo.country} -{" "}
-              {order.shippingInfo.pinCode}
-            </p>
-            <p className="mb-1">
-              📞 {order.shippingInfo.phoneNo}
-            </p>
-          </div>
-
-          {/* 📦 Status */}
-          <div className="mt-3 d-flex justify-content-between align-items-center">
-            <span className="badge bg-warning text-dark">
-              {order.orderStatus || "Processing"}
-            </span>
-
-            <small className="text-muted">
-              {new Date(order.createdAt).toLocaleString()}
-            </small>
-          </div>
-        </div>
-      ))}
+      <table className="table table-striped table-hover align-middle">
+  <thead className="table-dark">
+    <tr>
+      <th>Item</th>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Price (₹)</th>
+      <th>Items Price (₹)</th>
+      <th>Tax (₹)</th>
+      <th>Shipping (₹)</th>
+      <th>Total (₹)</th>
+      <th>Shipping Info</th>
+      <th>Status</th>
+      <th>Ordered At</th>
+      <th>Progress</th>
+    </tr>
+  </thead>
+  <tbody>
+    {orders.map((order) =>
+      order.orderItems.map((item, index) => (
+        <tr key={item._id}>
+          <td>
+            <Image
+              src={item.image}
+              alt={item.name}
+              width={50}
+              height={50}
+              unoptimized
+              className="rounded-2"
+            />
+          </td>
+          <td>{item.name}</td>
+          <td>{item.quantity}</td>
+          <td>₹{item.price}</td>
+          {index === 0 && (
+            <>
+              <td rowSpan={order.orderItems.length}>₹{order.itemsPrice}</td>
+              <td rowSpan={order.orderItems.length}>₹{order.taxPrice}</td>
+              <td rowSpan={order.orderItems.length}>₹{order.shippingPrice}</td>
+              <td rowSpan={order.orderItems.length}>₹{order.totalPrice}</td>
+              <td rowSpan={order.orderItems.length}>
+                {order.shippingInfo.address}, {order.shippingInfo.city},{" "}
+                {order.shippingInfo.state}, {order.shippingInfo.country} -{" "}
+                {order.shippingInfo.pinCode} <br />
+                📞 {order.shippingInfo.phoneNo}
+              </td>
+              <td rowSpan={order.orderItems.length}>
+                <span className={`badge ${order.orderStatus === "Delivered" ? "bg-success" : "bg-warning text-dark"}`}>
+                  {order.orderStatus || "Processing"}
+                </span>
+              </td>
+              <td rowSpan={order.orderItems.length}>
+                {new Date(order.createdAt).toLocaleString()}
+              </td>
+              <td>
+                {order.orderStatus === "Processing" && (
+                  <button
+                    className="btn btn-primary btn-sm"
+                    onClick={() => handleUpdate(order._id, "Shipped")}
+                  >
+                    Shipped
+                  </button>
+                )}
+              </td>
+            </>
+          )}
+        </tr>
+      ))
+    )}
+  </tbody>
+</table>
     </div>
   );
 }

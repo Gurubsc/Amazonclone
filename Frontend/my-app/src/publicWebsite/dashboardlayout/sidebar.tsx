@@ -9,8 +9,8 @@ const Sidebar = () => {
 
   return (
     <div
-      className="p-3 bg-dark text-white "
-      style={{ minHeight: "100vh", width: "250px" }}
+      className="sidebar"
+
     >
       <h4 className="mb-4">Dashboard</h4>
 

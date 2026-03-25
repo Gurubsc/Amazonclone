@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { useContext } from "react";
 
 const AuthPage = () => {
   const [showSignup, setShowSignup] = useState(false);
@@ -15,6 +16,8 @@ const AuthPage = () => {
   const [error, setError] = useState("");
   const [user, setUser] = useState(null);
 
+
+  
   const router = useRouter();
 
   // Handle Login
@@ -22,6 +25,7 @@ const AuthPage = () => {
   e.preventDefault();
   setLoading(true);
   setError("");
+
 
   try {
     const response = await axios.post(
@@ -38,8 +42,10 @@ const AuthPage = () => {
     setEmail("");
     setPassword("");
 
+
     // Optional: redirect
      router.push("/"); // Change to your dashboard route
+     window.location.reload();
 
   } catch (err) {
     setError(
@@ -95,6 +101,7 @@ useEffect(() => {
         window.alert("Logged out successfully");
         setUser(null);
         router.push("/");
+        window.location.reload();
       }}
     >
       Log Out

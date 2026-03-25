@@ -3,6 +3,8 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useState , useEffect} from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
+
 
 
 interface Product {
@@ -70,7 +72,7 @@ useEffect(() => {
     setCity("Chennai");
     setState("Tamil Nadu");
     setCountry("India");
-    setPostalCode("605 001");
+    setPostalCode("605104");
     setContactNumber("9876543210");
 
     
@@ -120,7 +122,8 @@ const createOrder = async (e: React.FormEvent) => {
     );
 
     alert("✅ Order created successfully!");
-    console.log(res.data);
+  
+    
 
   } catch (err: any) {
     console.error(err.response?.data || err.message);

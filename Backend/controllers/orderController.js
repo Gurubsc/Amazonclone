@@ -51,6 +51,38 @@ exports.myOrders = catchAsyncError(async (req, res, next) => {
     });
 }   );
 
+
+//upadate 
+exports.updateStatus = catchAsyncError(async (req, res, next) => {
+  const { id } = req.params; // order id
+  const { status } = req.body; // new status
+
+  // 🔍 Find order
+  const order = await Order.findById(id);
+
+  if (!order) {
+    return res.status(404).json({
+      success: false,
+      message: "Order not found",
+    });
+  }
+
+  // 🔄 Update status
+  order.orderStatus = status;
+
+  // 📦 If delivered → set delivered time
+  if (status === "Delivered") {
+    order.deliveredAt = Date.now();
+  }
+
+  await order.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Order status updated",
+    order,
+  });
+});
 //admin get all orders
 exports.getAllOrders = catchAsyncError(async (req, res, next) => {
     const orders = await Order.find();

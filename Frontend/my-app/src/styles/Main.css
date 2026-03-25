@@ -627,6 +627,10 @@
     margin-top: auto;
 }
 
+.margin-bottom{
+  margin-bottom: 210px;
+}
+
 
 .shadow {
  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -683,6 +687,28 @@
 .card-body h6 {
   margin-top: 10px;
 }
+.sidebar {
+   position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: #1e293b;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 250px;
+  background: #1e293b;
+  color: white;
+  padding: 20px;
+}
+
+  
+.margin-left{
+   margin-left: 250px;
+} 
 
 /* Mobile spacing */
 @media (max-width: 768px) {

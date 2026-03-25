@@ -9,15 +9,19 @@ import {
   FaEnvelope,
   FaBars,
 } from 'react-icons/fa';
+import { FaTruck } from "react-icons/fa";
+
 import { FiMenu } from "react-icons/fi";
 import { useEffect, useRef } from 'react';
 import Search from './search';
 import { useContext } from 'react';
-import { AuthContext } from '@/context/AuthContext';      
+import { AuthContext } from '@/context/AuthContext';
 
 export default function Navbar() {
   const headerRef = useRef(null);
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,10 +99,12 @@ export default function Navbar() {
             <div className="d-flex align-items-center gap-3 m-3 me-0">
 
               {/* Search */}
-                  <Search />
+              <Search />
 
               {/* Cart */}
-              <Link
+              {
+                user &&(
+                     <Link
                 href="/cart"
                 className="position-relative d-flex align-items-center justify-content-center"
               >
@@ -114,6 +120,9 @@ export default function Navbar() {
                   {user?.products?.length || 0}
                 </span>
               </Link>
+                )
+              }
+             
 
               {/* User */}
               <Link
@@ -122,6 +131,19 @@ export default function Navbar() {
               >
                 <FaUser className="fs-2 text-warning" />
               </Link>
+
+
+
+
+
+              {user && (
+                <Link
+                  href="/trackorder"
+                  className="d-flex align-items-center justify-content-center"
+                >
+                  <FaTruck className="fs-1 text-warning" />
+                </Link>
+              )}
 
             </div>
 
