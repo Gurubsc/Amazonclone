@@ -4,6 +4,8 @@ import { useSearchParams } from "next/navigation";
 import { useState , useEffect} from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { QRCodeCanvas } from "qrcode.react";
+
 
 
 
@@ -34,6 +36,9 @@ const order = () => {
     const [contactNumber, setContactNumber] = useState("");
     const [paymentMethod, setPaymentMethod] = useState("");
 
+      const upiLink = "upi://pay?pa=g&pn=MyShop&am=5&cu=INR"
+
+
     useEffect(() => {
         const fetchOrderDetails = async () => {
           try {
@@ -54,7 +59,7 @@ const order = () => {
     //       try {
     //         const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/me`, {
     //             headers: {
-    //                 Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //                 Authorization: `Bearer ${sesstionStorage.getItem("token")}`,
     //             },
     //         });
     //         setUser(res.data.user);
@@ -131,8 +136,21 @@ const createOrder = async (e: React.FormEvent) => {
   }
 };
 
+  const handleUPIPayment = () => {
+    window.location.href = upiLink;
+  };
 
-
+  // 👉 Handle Order
+  const handlePlaceOrder = () => {
+    if (paymentMethod === "cod") {
+      alert("✅ Order placed with Cash on Delivery");
+      // 👉 call backend API here
+    } else if (paymentMethod === "upi") {
+      alert("⚠️ Please complete UPI payment");
+    } else {
+      alert("❌ Please select payment method");
+    }
+  };
 
 
   return (
@@ -216,16 +234,59 @@ const createOrder = async (e: React.FormEvent) => {
                 <input type="Number" className="form-control" value={contactNumber} onChange={(e) => setContactNumber( e.target.value)} placeholder="Enter your contact number" required />
             </div>
 
-            <div className="mb-3">
-                <label className="form-label">Payment Method</label>
-                <select className="form-select" value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)} required>
-                    <option value="">Select Payment Method</option>
-                    {/* <option value="credit_card">Credit Card</option>
-                    <option value="paypal">PayPal</option> */}
-                    <option value="cod">Cash on Delivery</option>
-                </select>
-            </div>
+        {/* <div className="mb-3">
+          <label className="form-label">Payment Method</label>
+          <select
+            className="form-select"
+            value={paymentMethod}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+            required
+          >
+            <option value="">Select Payment Method</option>
+            <option value="cod">Cash on Delivery</option>
+            <option value="upi">UPI Payment</option> 
+          </select>
+        </div> */}
 
+        <div className="mb-3">
+          <label className="form-label">Payment Method</label>
+          <select
+            className="form-select"
+            value={paymentMethod}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+          >
+            <option value="">Select Payment Method</option>
+            <option value="cod">Cash on Delivery</option>
+            <option value="upi">UPI Payment</option>
+          </select>
+        </div>
+
+        {/* 💳 UPI Section */}
+        {paymentMethod === "upi" && (
+          <div className="text-center mt-4">
+            <h5>Scan & Pay</h5>
+
+            {/* 📷 QR Code */}
+            <QRCodeCanvas value={upiLink} size={200} />
+
+            <p className="mt-2">PAY IN QR</p>
+
+            {/* 📱 Open UPI Apps */}
+            <button
+              onClick={handleUPIPayment}
+              className="btn btn-success mt-3"
+            >
+              Pay via UPI Apps
+            </button>
+
+            <p className="text-danger mt-2">
+              After payment click "Place Order"
+            </p>
+          </div>
+        )}
+
+
+        
             <button type="submit" className="btn btn-primary m-4">Submit Order</button>
          </form>
 

@@ -119,7 +119,7 @@
   "price": 1999,
   "category": "Sports",
   "image": {
-    "filename": "http://localhost:8000/api/image/80.jfif"
+    "filename": "http://localhost:8000/api/image/sho.jpg"
   },
   "ratings": 4.3,
   "seller": "Sports World",
@@ -147,7 +147,7 @@
   "price": 3499,
   "category": "Home",
   "image": {
-    "filename": "http://localhost:8000/api/image/05.jfif"
+    "filename": "http://localhost:8000/api/image/paan.png"
   },
   "ratings": 4.1,
   "seller": "Kitchen Essentials",
@@ -160,4 +160,183 @@
       "comment": "Good quality but slightly heavy."
     }
   ]
+},
+{
+  "_id": {
+    "$oid": "69bcd2f66f8cd24af8c0a3e3"
+  },
+  "name": "Sony PlayStation 5 (PS5)",
+  "description": "Latest Apple iPhone 15 with A17 chip, 128GB storage, 6GB RAM",
+  "price": 79999,
+  "category": "Electronics",
+  "image": {
+    "filename": "http://localhost:8000/api/image/09.png"
+  },
+  "ratings": 4.5,
+  "user": {
+    "$oid": "69ba4055633fd656af662d1c"
+  },
+  "seller": "Apple Store",
+  "stock": 50,
+  "numOfReviews": 2,
+  "reviews": [
+    {
+      "name": "John Doe",
+      "rating": 5,
+      "comment": "Excellent phone!",
+      "_id": {
+        "$oid": "69bcd2f66f8cd24af8c0a3e4"
+      }
+    },
+    {
+      "name": "Jane Smith",
+      "rating": 4,
+      "comment": "Good, but a bit expensive.",
+      "_id": {
+        "$oid": "69bcd2f66f8cd24af8c0a3e5"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-03-20T04:54:14.638Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-20T04:54:14.638Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69bcd4516f8cd24af8c0a401"
+  },
+  "name": "Apple iPhone 15",
+  "description": "Latest Apple iPhone 15 with A17 chip, 128GB storage, 6GB RAM",
+  "price": 79999,
+  "category": "Electronics",
+  "image": {
+    "filename": "http://localhost:8000/api/image/ph.png"
+  },
+  "ratings": 0,
+  "user": {
+    "$oid": "69ba4055633fd656af662d1c"
+  },
+  "seller": "Apple Store",
+  "stock": 50,
+  "numOfReviews": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-03-20T05:00:01.493Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-20T05:00:01.493Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69bce935163261a0807bb0a7"
+  },
+  "name": "Apple",
+  "description": "A sweet and crunchy fruit, usually red, green, or yellow. It is rich in fiber and good for digestion",
+  "price": 500,
+  "category": "fruits",
+  "image": {
+    "filename": "http://localhost:8000/api/image/09.jpg"
+  },
+  "ratings": 0,
+  "user": {
+    "$oid": "69ba4055633fd656af662d1c"
+  },
+  "seller": "test",
+  "stock": 555,
+  "numOfReviews": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-03-20T06:29:09.814Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-20T06:29:09.814Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69bce9ef163261a0807bb0aa"
+  },
+  "name": "Banana",
+  "description": "A soft, sweet fruit with a yellow peel. It is high in potassium and gives quick energy",
+  "price": 400,
+  "category": "fruits",
+  "image": {
+    "filename": "http://localhost:8000/api/image/banna.png"
+  },
+  "ratings": 0,
+  "user": {
+    "$oid": "69ba4055633fd656af662d1c"
+  },
+  "seller": "test",
+  "stock": 554,
+  "numOfReviews": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-03-20T06:32:15.756Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-20T06:32:15.756Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69bcebb6163261a0807bb0ad"
+  },
+  "name": "Mango",
+  "description": "A juicy and sweet tropical fruit with a yellow-orange color. It is known as the “king of fruits.",
+  "price": 300,
+  "category": "fruits",
+  "image": {
+    "filename": "http://localhost:8000/api/image/mon.png"
+  },
+  "ratings": 0,
+  "user": {
+    "$oid": "69ba4055633fd656af662d1c"
+  },
+  "seller": "Guru",
+  "stock": 388,
+  "numOfReviews": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-03-20T06:39:50.636Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-20T06:39:50.636Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69bcec5c163261a0807bb0b0"
+  },
+  "name": "Orange",
+  "description": "A citrus fruit with a tangy and sweet taste. It is rich in vitamin C and boosts immunity",
+  "price": 299,
+  "category": "fruits",
+  "image": {
+    "filename": "http://localhost:8000/api/image/or.jpg"
+  },
+  "ratings": 0,
+  "user": {
+    "$oid": "69ba4055633fd656af662d1c"
+  },
+  "seller": "navin",
+  "stock": 366,
+  "numOfReviews": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-03-20T06:42:36.808Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-20T06:42:36.808Z"
+  },
+  "__v": 0
 }]
